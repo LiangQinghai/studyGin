@@ -1,0 +1,18 @@
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] Loaded HTML Templates (2): 
+	- 
+	- test.tmpl
+
+[GIN-debug] GET    /static/*filepath         --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] HEAD   /static/*filepath         --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] GET    /welcome                  --> main.main.func1 (4 handlers)
+[GIN-debug] GET    /asciiJson                --> main.main.func2 (3 handlers)
+[GIN-debug] GET    /buf                      --> main.main.func3 (3 handlers)
+[GIN-debug] GET    /html                     --> main.main.func4 (3 handlers)
+[GIN-debug] POST   /singlePost               --> main.main.func5 (3 handlers)
+[GIN-debug] GET    /bind                     --> main.main.func6 (3 handlers)
+[GIN-debug] POST   /login                    --> main.main.func7 (3 handlers)
+[GIN] 2020/04/19 - 23:25:00 |[97;41m 500 [0m|   15.2102995s |       127.0.0.1 |[97;46m POST    [0m "/login"

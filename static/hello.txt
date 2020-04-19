@@ -1,0 +1,3 @@
+export CPLUS_INCLUDE_PATH=C:\Coding\vcpkg\packages\rocksdb_x64-windows\include
+export LD_LIBRARY_PATH=C:\Coding\vcpkg\packages\rocksdb_x64-windows
+export LIBRARY_PATH=C:\Coding\vcpkg\packages\rocksdb_x64-windows

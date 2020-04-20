@@ -1,0 +1,11 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "Just for study",
+        "title": "Test Swagger",
+        "contact": {},
+        "license": {},
+        "version": "1.0"
+    },
+    "paths": {}
+}

@@ -1,0 +1,8 @@
+info:
+  contact: {}
+  description: Just for study
+  license: {}
+  title: Test Swagger
+  version: "1.0"
+paths: {}
+swagger: "2.0"

@@ -4,6 +4,8 @@ import (
 	"context"
 	"fmt"
 	"github.com/gin-gonic/gin/testdata/protoexample"
+	"github.com/swaggo/files"
+	ginSwagger "github.com/swaggo/gin-swagger"
 	"io"
 	"log"
 	"net/http"
@@ -107,6 +109,10 @@ func AuthMid() gin.HandlerFunc {
 
 }
 
+// @title Test Swagger
+// @version 1.0
+// @description Just for study
+
 func main() {
 
 	// 日志同时写到文件和控制台
@@ -202,32 +208,41 @@ func main() {
 		Password: "123456",
 	}
 	// login生成token
-	app.POST("/login", func(c *gin.Context) {
-		user := User{}
-		err := c.BindJSON(&user)
-		if err != nil {
-			panic(err)
-		}
+	app.POST("/login",
+		// @Accept json
+		// @Produce json
+		// @Param name query string true
+		// @Param password query string true
+		// @Router /login [post]
+		func(c *gin.Context) {
+			user := User{}
+			err := c.BindJSON(&user)
+			if err != nil {
+				panic(err)
+			}
 
-		u := users[user.Name]
-		if u.Name == "" {
-			panic("user is not exit.")
-		}
-		if u.Password != user.Password {
-			panic("Password invalid.")
-		}
+			u := users[user.Name]
+			if u.Name == "" {
+				panic("user is not exit.")
+			}
+			if u.Password != user.Password {
+				panic("Password invalid.")
+			}
 
-		if token, err := GenerateToken(&u); err != nil {
-			panic(err)
-		} else {
-			c.JSON(http.StatusOK, gin.H{
-				"code":  http.StatusOK,
-				"token": token,
-				"date":  time.Now().Format("2006/01/02 15:04:05"),
-			})
-		}
-		panic("Failed to get token.")
-	})
+			if token, err := GenerateToken(&u); err != nil {
+				panic(err)
+			} else {
+				c.JSON(http.StatusOK, gin.H{
+					"code":  http.StatusOK,
+					"token": token,
+					"date":  time.Now().Format("2006/01/02 15:04:05"),
+				})
+			}
+			panic("Failed to get token.")
+		})
+
+	// swagger
+	app.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
 	server := &http.Server{
 		Addr:    ":8888",
